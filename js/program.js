@@ -25,7 +25,7 @@ const itemImages = {
 function wuzi(){
 	if (actionPoints > 0) {
 	    let foundWater = Math.random() < 0.5;  // 50% 概率找到西瓜
-	    let foundPotatoes = Math.random() < 0.3; // 30% 概率找到土豆
+	    let foundPotatoes = Math.random() < 0.3; // 30% 概率找到马铃薯
 
 	    if (foundWater) {
 	        inventory.water += 1;
@@ -36,7 +36,7 @@ function wuzi(){
 	        
 	    if (foundPotatoes) {
 	        inventory.potatoes += 1;
-	        message(`成功找到了土豆！`);
+	        message(`成功找到了马铃薯！`);
 	        addToInventory('potatoes');
 		}
 		actionPoints -= 1;
