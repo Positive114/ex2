@@ -100,7 +100,7 @@ function bedout(){
 }
 
 function playSound() {
-    var sound = new Audio('img/吃东西.mp3'); // 假设你的音效文件名为click.mp3，放在与HTML文件同一目录下
+    var sound = new Audio('img/吃东西.mp3'); 
     // 播放音效
     sound.play();
 }
