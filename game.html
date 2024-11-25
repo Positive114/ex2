@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>幸存者指南</title>
+		<link rel="stylesheet" href="css/styles.css" type="text/css">
+
+		</head>
+		<body>
+		    <div class="video-background" >
+		        <video autoplay muted loop id="background">
+		            <source  src="img/白天1.mp4" type="video/mp4">
+		            您的浏览器不支持视频标签。
+		        </video>
+		    </div>
+			<div><img id="bed" class="bed" src="img/床.png" onclick="nosleep()"></div>
+			<div  class="day">第<span id="day">1</span>天</div>
+			<div class="shuxing">
+				<div>行动点数:<span id="actionPoints">5</span></div>
+			</div>
+			<div class="shuxing">
+				<div id="thirst">饥渴值:<span id="th">0</span></div>
+			</div>
+			<div class="shuxing">
+				<div>精神状态:<span id="mentalState">50</span></div>
+			</div>
+			<div id="message"></div>
+			<div class="wuping"><img src="img/物品栏.png"/></div>
+			
+			<div id="inventory"></div>
+			<input class="wuzibutton" type="button" value="搜寻物资" onclick="wuzi()"/>
+			<input class="restbutton" type="button" value="休息" id="rest" onclick="rest()"/>
+		</body>
+		<script src="js/program.js" type="text/javascript"></script>
+</html>
