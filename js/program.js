@@ -4,12 +4,19 @@ let thirst = 0; // thirst increases every day
 let actionPoints = 5;
 let inventory = { watermelon: 0, potatoes: 0};
 
+
 function updateStats() {
-    // document.getElementById('days').innerText = days;
+    document.getElementById('day').innerText = days;
     document.getElementById('mentalState').innerText = mentalState;
-    document.getElementById('thirst').innerText = thirst;
+    document.getElementById('th').innerText = thirst;
     document.getElementById('actionPoints').innerText = actionPoints;
     // document.getElementById('inventory').innerText = JSON.stringify(inventory);
+	if (thirst>=10){
+		document.getElementById("thirst").style.color="red";
+	}
+	else{
+		document.getElementById("thirst").style.color="greenyellow";
+	}
 }
 
 function message(text) {
@@ -91,16 +98,16 @@ function eat(div){
 	updateStats();
 }
 
-function bedover(){
-	document.getElementById("bed").src="img/床2.png";
-}
+// function bedover(){
+// 	document.getElementById("bed").src="img/床2.png";
+// }
 
-function bedout(){
-	document.getElementById("bed").src="img/床.png";
-}
+// function bedout(){
+// 	document.getElementById("bed").src="img/床.png";
+// }
 
 function playSound() {
-    var sound = new Audio('img/吃东西.mp3'); 
+    var sound = new Audio('img/吃东西.mp3'); // 假设你的音效文件名为click.mp3，放在与HTML文件同一目录下
     // 播放音效
     sound.play();
 }
@@ -109,6 +116,35 @@ function nosleep(){
 	alert("现在是白天，你还不能睡觉");
 }
 
+function sleep(){
+	if (thirst>=10){
+		alert("游戏结束，是否重新开始？");
+		location.reload();
+	}
+	else{
+		alert("即将度过一个安稳的夜晚");
+		document.getElementById("background").src="img/白天1.mp4";
+		actionPoints = 5;
+		days+=1;
+		thirst+=3;
+		updateStats();
+		document.getElementById("bed").onclick=nosleep;
+		document.getElementById("rest").onclick=rest;
+	}
+}
+
 function rest(){
 	alert("即将进入夜晚");
+	document.getElementById("background").src="img/黑夜2.mp4";
+	actionPoints = 5;
+	thirst+=1;
+	updateStats();
+	document.getElementById("bed").onclick=sleep;
+	document.getElementById("rest").onclick=norest;
 }
+
+function norest(){
+	alert("你已经休息过了，去床上好好睡一觉吧！");
+}
+
+
