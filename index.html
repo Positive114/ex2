@@ -26,7 +26,7 @@
 
         .menu {
             text-align: center;
-            background: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+            background: rgba(0, 0, 0, 0.7);
             padding: 50px;
             border-radius: 15px;
         }
@@ -70,19 +70,93 @@
         .exit:hover {
             background-color: darkred;
         }
+
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .modal button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background: darkgreen;
+        }
     </style>
 </head>
 <body>
     <div class="background">
         <div class="menu">
             <h1>幸存者指南</h1>
-			<a href="game.html" style="text-decoration: none;">
-            <button class="button start">开始</button>
-			</a>
+            <a href="game.html" style="text-decoration: none;">
+                <button class="button start">开始</button>
+            </a>
             <button class="button settings">设置</button>
             <button class="button exit">退出</button>
         </div>
     </div>
+
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <h2>设置</h2>
+            <p>这里可以放一些设置选项。</p>
+            <button id="closeSettings">关闭</button>
+        </div>
+    </div>
+
+    <script>
+		
+        const settingsButton = document.querySelector('.settings');
+        const exitButton = document.querySelector('.exit');
+        const settingsModal = document.getElementById('settingsModal');
+        const closeSettingsButton = document.getElementById('closeSettings');
+
+        settingsButton.addEventListener('click', () => {
+            settingsModal.style.display = 'flex';
+        });
+
+        closeSettingsButton.addEventListener('click', () => {
+            settingsModal.style.display = 'none';
+        });
+
+        exitButton.addEventListener('click', () => {
+            const confirmExit = confirm("确定要退出游戏吗？");
+            if (confirmExit) {
+                alert("游戏已退出！");
+            }
+        });
+
+        settingsModal.addEventListener('click', (e) => {
+            if (e.target === settingsModal) {
+                settingsModal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
 
