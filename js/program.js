@@ -130,6 +130,7 @@ function sleep(){
 		updateStats();
 		document.getElementById("bed").onclick=nosleep;
 		document.getElementById("rest").onclick=rest;
+		document.getElementById("hour").style.transform="translate(-50%,-100%) rotatez(180deg)";
 	}
 }
 
@@ -141,6 +142,7 @@ function rest(){
 	updateStats();
 	document.getElementById("bed").onclick=sleep;
 	document.getElementById("rest").onclick=norest;
+	document.getElementById("hour").style.transform="translate(-50%,-100%) rotatez(240deg)";
 }
 
 function norest(){
