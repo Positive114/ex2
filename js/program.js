@@ -1,22 +1,21 @@
 let days = 1;
-let mentalState = 50; // mental state can go up to 100
-let thirst = 0; // thirst increases every day
+let mentalState = 50;
+let thirst = 0;
 let actionPoints = 5;
 let inventory = { watermelon: 0, potatoes: 0};
 
 
 function updateStats() {
-    document.getElementById('day').innerText = days;
-    document.getElementById('mentalState').innerText = mentalState;
-    document.getElementById('th').innerText = thirst;
-    document.getElementById('actionPoints').innerText = actionPoints;
-    // document.getElementById('inventory').innerText = JSON.stringify(inventory);
-	if (thirst>=10){
-		document.getElementById("thirst").style.color="red";
-	}
-	else{
-		document.getElementById("thirst").style.color="greenyellow";
-	}
+    $('#day').text(days);
+    $('#mentalState').text(mentalState);
+    $('#th').text(thirst);
+    $('#actionPoints').text(actionPoints);
+    
+    if (thirst >= 10) {
+        $('#thirst').css('color', 'red');
+    } else {
+        $('#thirst').css('color', 'greenyellow');
+    }
 }
 
 function message(text) {
@@ -123,26 +122,26 @@ function sleep(){
 	}
 	else{
 		alert("即将度过一个安稳的夜晚");
-		document.getElementById("background").src="img/白天1.mp4";
+		$('#background').attr('src', 'img/白天1.mp4');
 		actionPoints = 5;
 		days+=1;
 		thirst+=3;
 		updateStats();
-		document.getElementById("bed").onclick=nosleep;
-		document.getElementById("rest").onclick=rest;
-		document.getElementById("hour").style.transform="translate(-50%,-100%) rotatez(180deg)";
+        $('#bed').off('click').on('click', nosleep);
+        $('#rest').off('click').on('click', rest);
+        $('#hour').css('transform', 'translate(-50%,-100%) rotatez(180deg)');
 	}
 }
 
 function rest(){
 	alert("即将进入夜晚");
-	document.getElementById("background").src="img/黑夜2.mp4";
+	$('#background').attr('src', 'img/黑夜2.mp4');
 	actionPoints = 5;
 	thirst+=1;
 	updateStats();
-	document.getElementById("bed").onclick=sleep;
-	document.getElementById("rest").onclick=norest;
-	document.getElementById("hour").style.transform="translate(-50%,-100%) rotatez(240deg)";
+    $('#bed').off('click').on('click', sleep);
+    $('#rest').off('click').on('click', norest);
+    $('#hour').css('transform', 'translate(-50%,-100%) rotatez(240deg)');
 }
 
 function norest(){
